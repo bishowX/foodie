@@ -22,20 +22,6 @@ export const AuthProvider = ({ children }) => {
 		await signOut(auth);
 	};
 
-	// {
-	// 	setLoading(true);
-
-	// 	try {
-	// 		const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-	// 		if (userCredential.user) setUser(mapUser(userCredential.user));
-	// 		else setUser(null);
-	// 	} catch (error) {
-	// 		setError(error.message);
-	// 	}
-
-	// 	setLoading(false);
-	// };
-
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
 			if (user) setUser(mapUser(user));
