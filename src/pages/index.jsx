@@ -15,7 +15,7 @@ const Home = () => {
 
 	return (
 		<div>
-			<h1>Hello world</h1>
+			<h1>Hello {user?.displayName}</h1>
 			{user ? (
 				<>
 					<h1>{user.email}</h1>
