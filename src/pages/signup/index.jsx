@@ -8,6 +8,7 @@ import { useAuth } from "../../context/auth-context";
 const Signup = () => {
 	const { signupWithEmailAndPassword } = useAuth();
 
+	const [fullName, setFullName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -20,7 +21,7 @@ const Signup = () => {
 		event.preventDefault();
 		setLoading(true);
 
-		signupWithEmailAndPassword(email, password)
+		signupWithEmailAndPassword(email, password, fullName)
 			.then(() => {
 				setLoading(false);
 				router.push("/");
@@ -35,6 +36,10 @@ const Signup = () => {
 		<div>
 			<h3>Signup</h3>
 			<form onSubmit={handleSignup}>
+				<label style={{ display: "block" }} htmlFor="email">
+					Full Name
+				</label>
+				<input disabled={loading} value={fullName} onChange={(event) => setFullName(event.target.value)} minLength={0} type="text" name="fullName" />
 				<label style={{ display: "block" }} htmlFor="email">
 					Email
 				</label>
